@@ -82,15 +82,44 @@ class Doctor : public Persona
             Persona::saludar();
             std::cout << presentacion << " y especialidad en " << especialidad << std::endl;
         }
-}
+};
 
 class Enfermera : public Persona{
     private:
         std::string presentacion;
-}
+
+    public:
+        Enfermera(std::string nom, int edad_, std::string sexo_) : Persona(nom, edad_, sexo_){
+            presentacion = "Hola soy una enfermera.";
+        }
+        void saludar () const {
+            Persona::saludar();
+            std::cout << presentacion << std::endl;
+        }
+};
+
+class Bombero : public Persona{
+    private:
+    std::string presentacion;
+    
+    public:
+    Bombero(std::string nom, int edad_, std::string sexo_) : Persona(nom, edad_, sexo_){
+        presentacion = "Hola soy un bombero y apago incendios.";
+    }
+};
 
 int main() {
     Arquitecto arquitecto("Juan", 45, "Hombre");
     arquitecto.saludar();
+
+    Doctor doctor("Ana", 50, "Mujer", "Cardiologia");
+    doctor.saludar();
+
+    Enfermera enfermera("Luis", 30, "Hombre");
+    enfermera.saludar();
+    
+    Bombero bombero("Maria", 25, "Mujer");
+    bombero.saludar();
+
     return 0;
 }
